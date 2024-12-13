@@ -1,37 +1,46 @@
-@import "https://unpkg.com/open-props/easings.min.css";
+@import 'https://unpkg.com/open-props/easings.min.css';
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
 
 :root {
-    /* spotify colors*/
-    --spotify-green: #1ed760;
-    --spotify-black: #121212;
-    --spotify-white: #ffffff;
-    --spotify-grey: #b3b3b3;
-    --spotify-darkGrey: #222222;
+  /* spotify colors*/
+  --spotify-green: #1ed760;
+  --spotify-black: #121212;
+  --spotify-white: #ffffff;
+  --spotify-grey: #b3b3b3;
+  --spotify-darkGrey: #222222;
 }
 
 /* reset */
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-size: 1rem;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-family: 'Manrope', sans-serif;
 }
 
 img,
 svg {
-    display: block;
-    max-width: 100%;
-    height: auto;
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 /* global page styles */
 
-html {}
+html {
+  background-color: var(--spotify-black);
+}
 
 /* center everything */
 
-body {}
+body {
+  display: grid;
+  place-items: center;
+  /* center vertically */
+  min-height: 100vh;
+}
 
 /*
     Object: Button reset
@@ -40,40 +49,125 @@ body {}
 */
 
 .button-reset {
-    border: none;
-    margin: 0;
-    padding: 0;
-    width: auto;
-    overflow: visible;
-    background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
 
-    /* inherit font & color from ancestor */
-    color: inherit;
-    font: inherit;
+  /* inherit font & color from ancestor */
+  color: inherit;
+  font: inherit;
 
-    /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
-    line-height: normal;
+  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+  line-height: normal;
 
-    /* Corrects font smoothing for webkit */
-    -webkit-font-smoothing: inherit;
-    -moz-osx-font-smoothing: inherit;
+  /* Corrects font smoothing for webkit */
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
 
-    /* Corrects inability to style clickable `input` types in iOS */
-    -webkit-appearance: none;
+  /* Corrects inability to style clickable `input` types in iOS */
+  -webkit-appearance: none;
 }
 
 /*
     Toggle button
 */
 
+.toggle {
+  display: grid;
+  /* align-items: center; */
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-template-areas: 'icon';
+}
+
+.icon {
+  margin: auto;
+  grid-area: icon;
+  opacity: 0;
+  transition: opacity 0.2s var(--ease-5);
+}
+
+.icon--add {
+  color: var(--spotify-white);
+}
+
+.icon--check {
+  color: var(--spotify-green);
+}
+
+.added > .icon--add {
+  opacity: 0;
+}
+
+.added > .icon--check {
+  opacity: 1;
+}
+
+.icon--add {
+  opacity: 1;
+}
+
+.icon--check {
+  opacity: 0;
+}
+
 /*
     Album
 */
+
+/* place album card in the middle of the screen using css grid */
+/* max width 400px */
+.album {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1rem;
+
+  background-color: var(--spotify-darkGrey);
+  border-radius: 1rem;
+
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto;
+  gap: 1rem;
+}
+
+.album__img {
+  border-radius: 0.5rem;
+}
+
+.album__header {
+  display: grid;
+  grid-template-columns: auto 1.75rem;
+  grid-template-rows: 1.75rem 1.75rem;
+  grid-template-areas:
+    'title action'
+    'artist action';
+}
+
+.album__title {
+  color: var(--spotify-white);
+  grid-area: title;
+  margin: auto 0;
+}
+
+.album__artist {
+  color: var(--spotify-grey);
+  grid-area: artist;
+  margin: auto 0;
+}
+
+.album__action {
+  grid-area: action;
+  color: var(--spotify-white);
+}
 
 /*
     Utitlities
 */
 
 .color-grey {
-    color: var(--spotify-grey);
+  color: var(--spotify-grey);
 }
